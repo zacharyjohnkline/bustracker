@@ -9,6 +9,12 @@ This was another project to showcase my ability to work with external API reques
 
 • watch as every 15 seconds the gps coordinates are logged to the page below.
 
+## Future Improvements
+
+• I would like to be able to have the list detail streets and cardinal directions instead of gps coordinates.
+
+• I would like to have a selection of multiple buses you can track instead of one mysterious bus in Boston.
+
 
 ## License
 
