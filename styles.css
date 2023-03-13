@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  width: 100%;
+  min-height: 768px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+#map {
+  width: 100%;
+  height: 300px;
+}
+.map-area {
+  width: 100%;
+  height: 300px;
+  /* background-color: red; */
+}
+.page-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* background-color: white; */
+}
+.header {
+  background-image: linear-gradient(90deg, #4f73b6, #77acdf);
+  min-height: 70px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  justify-content: center;
+}
+#back {
+  text-decoration: none;
+  display: flex;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 3em;
+  text-align: center;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: #ffffff35;
+}
+#back:hover {
+  background-color: white;
+  color: #4f73b6;
+  cursor: pointer;
+}
+.footer {
+  width: 100%;
+  background-color: white;
+  border-top: 3px solid lightgray;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+#title-words {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 2.3em;
+  color: white;
+  text-align: center;
+  border-left: 2px solid white;
+  padding-left: 5%;
+}
+.map-area {
+  width: 100%;
+  height: 100%;
+}
+.stops {
+  font-family: "Roboto Condensed", sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin: 10px 10%;
+  color: #c98c9b;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+#stops-words {
+  font-size: 1.5em;
+}
+.stop-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2px;
+}
+.gray {
+  text-align: left;
+  width: 90%;
+  padding: 10px;
+  background-color: lightgray;
+  color: gray;
+}
+.white {
+  text-align: left;
+  width: 90%;
+  padding: 10px;
+  background-color: white;
+  color: gray;
+}
+#show-route {
+  font-family: "Roboto Condensed", sans-serif;
+  text-decoration: none;
+  border: none;
+  background-color: #c98c9b;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  margin-left: 3%;
+  font-size: 1.3em;
+}
+#show-route:hover {
+  background-color: #a36776;
+  cursor: pointer;
+}

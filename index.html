@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="page-container">
+      <div class="header">
+        <a id="back" href="https://github.com/zacharyjohnkline"><</a>
+        <div class="title"><p id="title-words">BUS TRACKER</p></div>
+      </div>
+      <div class="map-area">
+        <div id="map"></div>
+      </div>
+      <div class="footer">
+        <div class="stops">
+          <p id="stops-words">LOCATE</p>
+          <button id="show-route" onclick="run()">SHOW LOCATION</button>
+        </div>
+        <div class="stop-list"></div>
+      </div>
+    </div>
+    <script>
+      function myGitHub() {
+        location.href = "https://github.com/zacharyjohnkline";
+      }
+      const stopList = document.querySelector(".stop-list");
+
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoiemFydGlzdDc3IiwiYSI6ImNsYXNhcG9iZDAwNmozc28xM3UxcGc5ZDUifQ.GknsAjmOxS31lPc6RgYdug";
+
+      var map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: [-71.0, 42.3],
+        zoom: 10,
+      });
+      //determines gray or white background to location
+      let counter = 0;
+
+      async function run() {
+        counter++;
+        const locations = await getBusLocations();
+        const longitude = locations[1].attributes.longitude;
+        const latitude = locations[1].attributes.latitude;
+        console.log(new Date());
+        console.log(locations);
+        console.log(locations);
+        counter;
+        let stopInfo = document.createElement("p");
+        if (counter % 2 == 0) {
+          stopInfo.classList.add("gray");
+        } else {
+          stopInfo.classList.add("white");
+        }
+        stopInfo.innerText = `Bus is currently at latitude ${latitude} and longitude ${longitude}.`;
+        stopList.appendChild(stopInfo);
+
+        var marker = new mapboxgl.Marker()
+          .setLngLat([longitude, latitude])
+          .addTo(map);
+
+        // timer
+        setTimeout(run, 15000);
+      }
+
+      async function getBusLocations() {
+        const url =
+          "https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip";
+        const response = await fetch(url);
+        const json = await response.json();
+        return json.data;
+      }
+    </script>
+  </body>
+</html>
